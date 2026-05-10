@@ -47,7 +47,7 @@ module.exports = {
         // https://js.electronforge.io/maker/dmg/interfaces/makerdmgconfig
         icon: path.join(packageAssetsPath, "bbd.png"),
         overwrite: true,
-        name: "Batch Beatmap Downloader", // NEEDS TO BE SHORTER THAN 27 CHARACTERS
+        name: "Lazer Beatmap Downloader", // NEEDS TO BE SHORTER THAN 27 CHARACTERS
       },
     },
 
