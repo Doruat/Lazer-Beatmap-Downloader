@@ -71,11 +71,13 @@ const RuleInputDate = ({ rule, onChange }: PropTypes) => {
     onChange({ ...rule, value: selectedDate.getTime().toString() });
   }, [selectedDate]);
 
+  const DatePickerElement = DatePicker as any;
+
   return (
-    <DatePicker
+    <DatePickerElement
       className="input-height p-2 w-40 border-gray-300 border rounded focus:outline-blue-500"
       selected={new Date(parseInt(rule.value))}
-      onChange={(date) => setSelectedDate(date ?? new Date())}
+      onChange={(date: Date) => setSelectedDate(date ?? new Date())}
     />
   );
 };

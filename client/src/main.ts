@@ -34,6 +34,11 @@ export let window: BrowserWindow | null;
 export const name: string = "james"
 export let shouldBeClosed = false
 
+app.commandLine.appendSwitch("disable-gpu");
+app.commandLine.appendSwitch("disable-software-rasterizer");
+app.commandLine.appendSwitch("no-sandbox"); // Often required in certain Linux environments
+app.disableHardwareAcceleration();
+
 const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -41,7 +46,7 @@ const createWindow = (): void => {
     width: 1280,
     minHeight: 720,
     minWidth: 1280,
-    title: "Batch Beatmap Downloader",
+    title: "Lazer Beatmap Downloader",
     titleBarStyle: "hidden",
     icon: "./render/assets/bbd.ico",
     backgroundColor: "#fff",
@@ -72,19 +77,40 @@ const createWindow = (): void => {
   }
 
   // and load the index.html of the app.
+  console.log("Loading URL:", MAIN_WINDOW_WEBPACK_ENTRY);
+  console.log("Preload Path:", MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY);
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+
+  mainWindow.webContents.on("console-message", (event, level, message, line, sourceId) => {
+    console.log(`RENDERER LOG: ${message}`);
+  });
+
+  mainWindow.webContents.on("dom-ready", () => {
+    console.log("DOM is ready");
+  });
+
+  mainWindow.webContents.on("did-finish-load", () => {
+    console.log("Did finish load");
+  });
+
+  mainWindow.webContents.on("did-fail-load", () => {
+    console.log("Failed to load, retrying in 1s...");
+    setTimeout(() => {
+      mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+    }, 1000);
+  });
 };
 
-app.on("activate", () => {
-  app.disableHardwareAcceleration();
-});
-
 // This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
+// initialization and is ready to create windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", () => {
+  console.log("App is ready");
   createStores();
-  createWindow();
+  setTimeout(() => {
+    console.log("Creating window...");
+    createWindow();
+  }, 500);
   nativeTheme.themeSource = "dark";
 });
 

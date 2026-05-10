@@ -29,6 +29,8 @@ import {
 import {
   handleBrowse,
   handleGetPlatform,
+  handleListenForBeatmapCount,
+  handleListenForBeatmapScanComplete,
   handleListenForErrors,
   handleListenForServerDown,
   handleOpenUrl,
@@ -75,7 +77,9 @@ export const electronBridge = {
 
   listenForDownloads: handleListenForDownloads,
   listenForErrors: handleListenForErrors,
-  listenForServerDown: handleListenForServerDown
+  listenForServerDown: handleListenForServerDown,
+  listenForBeatmapCount: handleListenForBeatmapCount,
+  listenForBeatmapScanComplete: handleListenForBeatmapScanComplete
 };
 
 contextBridge.exposeInMainWorld("electron", electronBridge);

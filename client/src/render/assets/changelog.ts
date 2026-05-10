@@ -9,6 +9,32 @@ export interface ChangeLogItem {
 
 export const changeLog: ChangeLogItem[] = [
   {
+    version: "2.0.0",
+    date: 1778413287,
+    changes: [
+      {
+        title: "Release",
+        changes:[
+          "Released v2.0.0"
+        ]
+      },
+      {
+        title: "Search",
+        changes: [
+          "Removed the 'auto-autocomplete' when typing certain letters and making it unable to delete the query."
+        ]
+      },
+      {
+        title: "Client",
+        changes: [
+          "Removed feature to move downloaded files to osu! folder because it wouldn't work with lazer anyway.",
+          "Renamed 'Temporary Folder' to 'Downloads Folder' and is now mandatory to set to start a download.",
+          "Reimplemented algorithm for lazer to search for beatmaps user already has."
+        ],
+      }
+    ]
+  },
+  {
     version: "1.3.0",
     date: 1669446685871,
     changes: [

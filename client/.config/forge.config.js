@@ -10,6 +10,7 @@ module.exports = {
   packagerConfig: {
     asar: true,
     icon: path.join(packageAssetsPath, "bbd.ico"),
+    executableName: "batch-beatmap-downloader",
   },
   publishers: [
     {
@@ -66,13 +67,14 @@ module.exports = {
     },
   ],
   plugins: [
-    [
-      "@electron-forge/plugin-webpack",
-      {
+    {
+      name: "@electron-forge/plugin-webpack",
+      config: {
         mainConfig: "./.config/webpack.main.config.js",
         renderer: {
           config: "./.config/webpack.renderer.config.js",
-          devContentSecurityPolicy: `img-src * 'self' data: https:; default-src 'self' 'unsafe-inline' data:; script-src 'self' 'unsafe-eval' https://cdnjs.buymeacoffee.com;`,
+          devContentSecurityPolicy: `default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';`,
+          port: 3000,
           entryPoints: [
             {
               html: "./src/render/index.html",
@@ -85,6 +87,6 @@ module.exports = {
           ],
         },
       },
-    ],
+    },
   ],
 };

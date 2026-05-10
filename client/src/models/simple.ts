@@ -100,13 +100,6 @@ export const keyMap = new Map<string, string>([
 ])
 
 export const valueMap = new Map<string, string>([
-  ["r", "ranked"],
-  ['u', 'unranked'],
-  ['l', 'loved'],
-  ['o', 'osu!'],
-  ['t', 'Taiko'],
-  ['c', 'Catch the Beat'],
-  ['m', 'osu!mania'],
   ['english', 'English'],
   ['japanese', 'Japanese'],
   ['chinese', 'Chinese'],
@@ -169,27 +162,9 @@ export const getRules = (tree: Node, key?: string): Rule[] => {
 
 export const textAliasMap = new Map<string, string>([
   ['osu!', 'o'],
-  ['o', 'osu!'],
   ['Taiko', 't'],
-  ['t', 'Taiko'],
   ['Catch the Beat', 'c'],
-  ['c', 'Catch the Beat'],
-  ['osu!mania', 'm'],
-  ['m', 'osu!mania'],
-  ['Approved', 'status'],
-  ['status', 'Approved'],
-  ['r', 'ranked'],
-  ['Ranked', 'r'],
-  ['u', 'Unranked'],
-  ['Unranked', 'u'],
-  ['l', 'loved'],
-  ['Loved', 'l'],
-  ['video game', 'game'],
-  ['game', 'video game'],
-  ['hip hop', 'hiphop'],
-  ['hiphop', 'hip hop'],
-  ['HasLeaderboard', 'leaderboard'],
-  ['leaderboard', 'HasLeaderboard'],
+  ['osu!mania', 'm']
 ]);
 
 export const getValue = (tree: Node, item: TInputItem) => {

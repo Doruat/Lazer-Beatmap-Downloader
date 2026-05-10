@@ -19,4 +19,16 @@ export const handleListenForServerDown = (callback: (down: boolean) => void) => 
   });
 };
 
+export const handleListenForBeatmapCount = (callback: (count: number) => void) => {
+  ipcRenderer.on("beatmap-count", (event, count: number) => {
+    callback(count);
+  });
+};
+
+export const handleListenForBeatmapScanComplete = (callback: () => void) => {
+  ipcRenderer.on("beatmap-scan-complete", (event) => {
+    callback();
+  });
+};
+
 export const handleGetPlatform = () => ipcRenderer.invoke("get-platform") as Promise<NodeJS.Platform>;

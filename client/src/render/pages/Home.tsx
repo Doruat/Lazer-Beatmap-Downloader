@@ -1,7 +1,6 @@
 import React from "react";
 import { BasicStatus } from "../components/BasicStatus";
 import { InvalidPath } from "../components/InvalidPath";
-import { FindMissingMaps } from "../components/MissingMaps";
 import { SampleFilters } from "../components/SampleFilters";
 import { Settings } from "../components/Settings";
 import { Temporary } from "../components/Temporary";
@@ -30,7 +29,6 @@ export const Home = () => {
 
       {!validPath ? <InvalidPath /> : (
         <div className="flex flex-col gap-4">
-          <FindMissingMaps />
           <SampleFilters />
         </div>
       )}

@@ -6,7 +6,7 @@ import path from "path";
 export const checkValidPath = async (path: string) => {
   try {
     const files = await fs.promises.readdir(path);
-    if (!files.includes("collection.db")) {
+    if (!files.includes("files")) {
       return false;
     }
   } catch(err) {
@@ -38,7 +38,7 @@ export const getSongsFolder = async () => {
   }
 
   const osuPath = await settings.get("path") as string;
-  return path.join(osuPath, "Songs")
+  return path.join(osuPath, "files")
 }
 
 export const getDefaultTempPath = async () => {
@@ -62,8 +62,6 @@ export const getTempPath = async () => {
 }
 
 export const getDownloadPath = async () => {
-  const temp = await settings.get("temp") as boolean
-  if (!temp) return await getSongsFolder()
   return await getTempPath();
 };
 

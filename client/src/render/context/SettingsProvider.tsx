@@ -11,7 +11,7 @@ interface SettingsObject {
   beatmapSetCount: number;
   maxConcurrentDownloads: number;
   validPath: boolean;
-  autoTransfer: boolean;
+  scanning: boolean;
 }
 
 export interface Settings {
@@ -33,7 +33,7 @@ const defaultContext: Settings = {
     beatmapSetCount: 0,
     maxConcurrentDownloads: 5,
     validPath: false,
-    autoTransfer: false,
+    scanning: true,
   },
 
   toggleDarkMode: () => null,
@@ -58,10 +58,18 @@ const SettingsProvider: React.FC<PropsWithChildren<any>> = ({ children }) => {
         beatmapSetCount: res.sets as number ?? 0,
         maxConcurrentDownloads: res.maxConcurrentDownloads as number ?? 5,
         validPath: res.validPath as boolean ?? false,
-        autoTransfer: res.autoTransfer as boolean ?? false,
+        scanning: true,
       })
 
       document.documentElement.classList.toggle('dark', res.darkMode as boolean ?? true);
+    })
+
+    window.electron.listenForBeatmapCount((count) => {
+      setSettings(prev => ({ ...prev, beatmapSetCount: count }))
+    })
+
+    window.electron.listenForBeatmapScanComplete(() => {
+      setSettings(prev => ({ ...prev, scanning: false }))
     })
   }, []);
 

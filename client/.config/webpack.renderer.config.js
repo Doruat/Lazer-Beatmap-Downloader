@@ -4,7 +4,15 @@ const plugins = require("./webpack.renderer.plugins");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const path = require("path");
 
-rules.push({
+// Filter out the webpack-asset-relocator-loader as it causes __dirname issues in the renderer
+const rendererRules = rules.filter((rule) => {
+  if (rule.use && rule.use.loader && rule.use.loader.includes("webpack-asset-relocator-loader")) {
+    return false;
+  }
+  return true;
+});
+
+rendererRules.push({
   test: /\.css$/,
   use: [
     { loader: "style-loader" },
@@ -22,7 +30,7 @@ rules.push({
 
 module.exports = {
   module: {
-    rules,
+    rules: rendererRules,
   },
   plugins: plugins,
   resolve: {

@@ -92,14 +92,18 @@ export const loadDownloads = async () => {
       const force = download.force
       const hashes = [] as string[];
       const collectionName = ""
-      const dl = createDownload(key, ids, size, force, hashes, collectionName)
-      dl.setStatus({
-        ...dl.getStatus(),
-        completed: download.completed,
-        failed: download.failed,
-        skipped: download.skipped,
-        totalProgress: download.totalProgress
-      })
+
+      // Use a timeout to avoid blocking the main thread initialization
+      setTimeout(() => {
+        const dl = createDownload(key, ids, size, force, hashes, collectionName)
+        dl.setStatus({
+          ...dl.getStatus(),
+          completed: download.completed,
+          failed: download.failed,
+          skipped: download.skipped,
+          totalProgress: download.totalProgress
+        })
+      }, 0);
     }
   }
 };

@@ -28,8 +28,8 @@ export const Menu = ({ version }: PropTypes) => {
   ];
 
   const links = [
-    { link: "https://discord.gg/3nj6cKzynK", title: "Discord" },
-    { link: "https://www.buymeacoffee.com/nzbasic", title: "Donate" },
+    { link: "https://github.com/Doruat/Lazer-Beatmap-Downloader", title: "GitHub" },
+    { link: "https://boosty.to/doruat/donate", title: "Donate" },
   ]
 
   return (
@@ -39,8 +39,8 @@ export const Menu = ({ version }: PropTypes) => {
     >
       <img className="m-4" src={Logo as string} />
       <div className="text-sm self-center items-center flex flex-col">
-        <span className="">Batch Beatmap Downloader</span>
-        <span>by nzbasic</span>
+        <span className="">Lazer Beatmap Downloader</span>
+        <span>by nzbasic. Fork by Doruat</span>
         <span className="text-xs">v{version}</span>
       </div>
       <div className="flex flex-col justify-between h-screen mt-4">

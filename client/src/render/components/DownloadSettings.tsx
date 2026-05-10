@@ -50,18 +50,7 @@ export const DownloadSettings = ({ result }: PropTypes) => {
             <span>Force Download All Maps</span>
             <Switch checked={force} onChange={(e) => setForce(e)} />
           </div>
-          <div className="flex items-center gap-2">
-            <span>Create Collection</span>
-            <Switch checked={collection} onChange={(e) => setCollection(e)} />
-            {collection && (
-              <input
-                className="input-height p-2 w-40 border-gray-300 border rounded focus:outline-blue-500"
-                placeholder="Name"
-                value={collectionName}
-                onChange={(e) => setCollectionName(e.target.value)}
-              />
-            )}
-          </div>
+          
         </div>
       </div>
       <div className="flex items-center">
