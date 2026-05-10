@@ -55,21 +55,31 @@ export const loadBeatmaps = async () => {
   setTimeout(async () => {
     const root = await getSongsFolder()
     const files = await getAllFiles(root);
+    const CONCURRENCY = 100;
     const ids: number[] = [];
 
-    for (const file of files) {
-      try {
-        const id = await extractBeatmapSetID(file);
+    for (let i = 0; i < files.length; i += CONCURRENCY) {
+      const batch = files.slice(i, i + CONCURRENCY);
+
+      const results = await Promise.all(
+        batch.map(async (file) => {
+          try {
+            return await extractBeatmapSetID(file);
+          } catch {
+            return null;
+          }
+        })
+      );
+
+      for (const id of results) {
         if (id !== null) {
           ids.push(id);
-          if (new Set(ids).size != beatmapIds.size)
-            {beatmapIds = new Set(ids);
-            if (!(beatmapIds.size % 10)) 
-              window?.webContents.send("beatmap-count", beatmapIds.size)}
-
+          beatmapIds = new Set(ids)
+          if (beatmapIds.size%10==0)
+          {
+            window?.webContents.send("beatmap-count",beatmapIds.size)
+          }
         }
-      } catch {
-        // ignore unreadable files
       }
     }
     // Final update to ensure the last few are counted
