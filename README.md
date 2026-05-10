@@ -4,7 +4,7 @@
   </a>
 
   
-  Batch Beatmap Downloader (Beta)
+  Lazer Beatmap Downloader
 </h1>
 
 <div align="center">
