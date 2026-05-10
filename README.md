@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/nzbasic/batch-beatmap-downloader">
+  <a href="https://github.com/Doruat/lazer-beatmap-downloader">
     <img src="https://user-images.githubusercontent.com/54062686/154786704-a8f12c81-1ec3-48e4-a1cb-9f74ed164a43.png" alt="Logo" width="256" height="256">
   </a>
 
@@ -8,7 +8,7 @@
 </h1>
 
 <div align="center">
-  <h3><a href="https://github.com/nzbasic/batch-beatmap-downloader/releases/latest">Download Latest Release</a><h3>
+  <h3><a href="https://github.com/Doruat/lazer-beatmap-downloader/releases/latest">Download Latest Release</a><h3>
 </div>
 
 <div align="center">
@@ -30,7 +30,7 @@
 [![tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://github.com/tailwindlabs/tailwindcss)
 
   
-[![coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/nzbasic)
+[![coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://boosty.to/doruat/donate)
   
 </div>
 
@@ -94,16 +94,17 @@ You must have run your osu! client at least once.
 
 ### Usage
 
-<a href="https://github.com/nzbasic/batch-beatmap-downloader/releases/latest">Download the latest release here</a>
+<a href="https://github.com/Doruat/lazer-beatmap-downloader/releases/latest">Download the latest release here</a>
 
 #### Building yourself (for devs)
 
 Please follow these steps to build the project yourself:
 
 1. Pull the repo
-2. Run "yarn" to install dependencies
-3. Run "yarn make:win" (or "yarn start" to dev)
-4. Run the installer found in /releases/
+2. Change directory to ./client/
+3. Run "yarn" to install dependencies
+4. Run "yarn make:win" (or "yarn start" to dev)
+5. Run the installer found in /releases/
 
 ## Contributing
 
@@ -120,22 +121,15 @@ Please try to create bug reports that are:
 
 Reach out to the maintainer at one of the following places:
 
-- Discord: basic#7373
-- Twitter: @nzbasic
-- osu!: YEP
-- Email: jamescoppard024@gmail.com
+- Discord: Doruat
+- osu!: Doruat
+- Email: doruatamakucuk@gmail.com
 
 ## Donate
 
 If you would like to support me I would greatly appreciate it. 
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/nzbasic)
-
-Crypto
-- NANO: nano_3ymx5ymxgwrsfc53mem7bfmwjgzwxhtzp41wdkepnxmjdzzhhf3dgiiif8qc
-- ETH: 0x46cB2b27C5607282BAdAaf9973EFd728D202A1d3
-- BTC: bc1q0f0xtmmf7n05qgnmeun6ytc8z676j8tryszrr3
-- DOGE: DRRhYtaFFoyGUaU1h8MyE8LBbMETjDU5AR
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://boosty.to/doruat/donate)
 
 ## License
 
