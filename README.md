@@ -144,3 +144,4 @@ Special thanks to the following:
 - <https://github.com/Itsyuka/osu-buffer> - Great tool for reading and writing osu! binary types
 - <https://github.com/saucesteals/electron-typescript-react-tailwind-redux> - Great electron react tailwind typescript template
 - <https://github.com/dec0dOS/amazing-github-template> - Great readme template
+- <https://github.com/nzbasic/batch-beatmap-downloader> - Original project
