@@ -1,0 +1,2 @@
+/home/doruat/Downloads/cs/ConsoleApp1/bin/Release/net8.0/linux-x64/publish/ConsoleApp1.pdb
+/home/doruat/Downloads/cs/ConsoleApp1/bin/Release/net8.0/linux-x64/publish/ConsoleApp1

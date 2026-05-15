@@ -6,7 +6,7 @@ import path from "path";
 export const checkValidPath = async (path: string) => {
   try {
     const files = await fs.promises.readdir(path);
-    if (!files.includes("files")) {
+    if (!files.includes("client.realm")) {
       return false;
     }
   } catch(err) {
@@ -30,35 +30,19 @@ export const checkValidTempPath = async (path: string) => {
 }
 
 export const getSongsFolder = async () => {
-  const altPathEnabled = await settings.get("altPathEnabled") as boolean;
-
-  if (altPathEnabled) {
-    const altPath = await settings.get("altPath") as string;
-    return altPath;
-  }
-
   const osuPath = await settings.get("path") as string;
-  return path.join(osuPath, "files")
-}
-
-export const getDefaultTempPath = async () => {
-  const altPathEnabled = await settings.get("altPathEnabled") as boolean
-  if (altPathEnabled) return "";
-
-  const osuPath = await settings.get("path") as string;
-  const tempPath = path.join(osuPath, "bbd-temp")
-
-  if (!fs.existsSync(tempPath)) {
-    fs.mkdirSync(tempPath);
-  }
-
-  return tempPath;
+  return path.join(osuPath, "client.realm")
 }
 
 export const getTempPath = async () => {
   const tempPath = await settings.get("tempPath") as string
   if (tempPath) return tempPath
-  return getDefaultTempPath();
+  return "";
+}
+
+export const getAltPath = async () => {
+  const altPath = await settings.get("altPath") as string;
+  return altPath ? altPath : "";
 }
 
 export const getDownloadPath = async () => {

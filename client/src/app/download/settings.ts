@@ -77,7 +77,6 @@ export const loadDownloads = async () => {
     for (const key of keys) {
       const download = downloads[key].status;
       if (download.all === undefined || download.completed === undefined || download.failed === undefined || download.skipped === undefined) {
-        console.log('bad download', download.id)
         continue;
       }
 

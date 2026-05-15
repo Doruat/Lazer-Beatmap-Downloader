@@ -28,6 +28,7 @@ import {
 } from "./settings";
 import {
   handleBrowse,
+  handleBrowseFile,
   handleGetPlatform,
   handleListenForBeatmapCount,
   handleListenForBeatmapScanComplete,
@@ -36,6 +37,7 @@ import {
   handleOpenUrl,
   handleQuit
 } from "./system";
+import { Browsefile } from "@/render/components/BrowseFile";
 
 export const handleGenericError = (e: unknown) => {
   if (typeof e === "string") {
@@ -52,6 +54,7 @@ export const electronBridge = {
 
   openUrl: handleOpenUrl,
   browse: handleBrowse,
+  browsefile: handleBrowseFile,
   quit: handleQuit,
   getPlatform: handleGetPlatform,
 

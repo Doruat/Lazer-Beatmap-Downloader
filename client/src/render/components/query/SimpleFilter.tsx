@@ -136,7 +136,6 @@ export const SimpleFilter: React.FC<PropTypes> = ({ tree, updateTree }) => {
   }
 
   const removeRule = (item: TInputItem, operator: string) => {
-    console.log(item, operator)
     const clone = cloneDeep(tree)
     if (!clone.group) return
     clone.group.children = clone.group.children.filter(child => {

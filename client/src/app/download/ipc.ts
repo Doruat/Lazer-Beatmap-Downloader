@@ -24,7 +24,6 @@ export class DownloadIPC {
   constructor() {
     binaryPath.then(path => {
       this.ipc = new IPC(path);
-      this.ipc.on('log', console.log)
       this.ipc.on('available', () => {
         const request = this.queue.shift();
         if (!request) return this.available = true;

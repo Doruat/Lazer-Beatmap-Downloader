@@ -4,21 +4,25 @@ require("dotenv").config();
 
 const packageAssetsPath = path.join(__dirname, "..", "src", "render", "assets");
 
-console.log(packageAssetsPath);
 
 module.exports = {
   packagerConfig: {
+    extraResource: [
+      "./bin/publish/ConsoleApp1.exe",
+      "./bin/publish",
+      "./bin/realmreader"
+    ],
     asar: true,
     icon: path.join(packageAssetsPath, "bbd.ico"),
-    executableName: "batch-beatmap-downloader",
+    executableName: "lazer-beatmap-downloader",
   },
   publishers: [
     {
       name: "@electron-forge/publisher-github",
       config: {
         repository: {
-          owner: "nzbasic",
-          name: "batch-beatmap-downloader",
+          owner: "Doruat",
+          name: "lazer-beatmap-downloader",
           authToken: process.env.GITHUB_TOKEN,
         },
         draft: true,
@@ -32,12 +36,20 @@ module.exports = {
       name: "@electron-forge/maker-squirrel",
       config: {
         // https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig
+<<<<<<< HEAD
         setupExe: "BBDWindowsSetup.exe",
+=======
+        setupExe: "LBDWindowsSetup.exe",
+>>>>>>> b1821fa (i think its finally done)
         setupIcon: path.join(packageAssetsPath, "bbd.ico"),
         icon: path.join(packageAssetsPath, "bbd.ico"),
         iconUrl:
           "https://raw.githubusercontent.com/nzbasic/batch-beatmap-downloader/0d3d2a2f6754e0ba95f8470e71b82c579e0c5ee2/client/src/bbd.ico",
+<<<<<<< HEAD
         authors: "nzbasic",
+=======
+        authors: "Doruat",
+>>>>>>> b1821fa (i think its finally done)
       },
     },
     // You can only build the DMG target on macOS machines.

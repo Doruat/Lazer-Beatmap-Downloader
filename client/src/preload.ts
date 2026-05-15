@@ -7,6 +7,4 @@
  * https://www.electronjs.org/docs/tutorial/process-model#preload-scripts
  */
 
-console.log("Preload script started");
 import "./bridges/main";
-console.log("Preload script finished");

@@ -15,15 +15,6 @@ import SettingsProvider from "./render/context/SettingsProvider";
 import StatusProvider from "./render/context/StatusProvider";
 import "./render/index.css";
 
-console.log("Renderer process started");
-
-window.onerror = (message, source, lineno, colno, error) => {
-  console.log("Renderer Error:", message, "at", source, lineno, colno);
-};
-
-window.onunhandledrejection = (event) => {
-  console.log("Unhandled Rejection:", event.reason);
-};
 
 function render() {
   ReactDOM.render(

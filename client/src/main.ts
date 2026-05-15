@@ -76,25 +76,9 @@ const createWindow = (): void => {
     mainWindow.webContents.openDevTools();
   }
 
-  // and load the index.html of the app.
-  console.log("Loading URL:", MAIN_WINDOW_WEBPACK_ENTRY);
-  console.log("Preload Path:", MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY);
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  mainWindow.webContents.on("console-message", (event, level, message, line, sourceId) => {
-    console.log(`RENDERER LOG: ${message}`);
-  });
-
-  mainWindow.webContents.on("dom-ready", () => {
-    console.log("DOM is ready");
-  });
-
-  mainWindow.webContents.on("did-finish-load", () => {
-    console.log("Did finish load");
-  });
-
   mainWindow.webContents.on("did-fail-load", () => {
-    console.log("Failed to load, retrying in 1s...");
     setTimeout(() => {
       mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     }, 1000);
@@ -105,10 +89,8 @@ const createWindow = (): void => {
 // initialization and is ready to create windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", () => {
-  console.log("App is ready");
   createStores();
   setTimeout(() => {
-    console.log("Creating window...");
     createWindow();
   }, 500);
   nativeTheme.themeSource = "dark";

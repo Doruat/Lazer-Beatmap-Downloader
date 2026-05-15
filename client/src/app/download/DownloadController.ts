@@ -3,7 +3,7 @@ import axios from "axios";
 import { DownloadStatus } from "../../models/api";
 import { serverUri } from "../ipc/main";
 import { shouldBeClosed, window } from "../../main";
-import { getDownloadPath, getMaxConcurrentDownloads, getSongsFolder, getTempPath } from "../settings";
+import { getAltPath, getDownloadPath, getMaxConcurrentDownloads, getSongsFolder, getTempPath } from "../settings";
 import { beatmapIds, loadBeatmaps } from "../beatmaps";
 import { clientId, setDownloadStatus } from "./settings";
 import { addCollection } from "../collection/collection";
@@ -12,6 +12,7 @@ import { DownloadIPC } from './ipc';
 import settings from 'electron-settings';
 import fs from 'fs';
 import path from 'path';
+import { execFile, execFileSync } from 'child_process';
 
 enum Status {
   FINISHED,
@@ -139,29 +140,8 @@ export class DownloadController {
 
   private async moveTempFiles() {
     const tempPath = await getTempPath();
-    const songsPath = await getSongsFolder();
-
-    // move all files in temp path to songs path
-    const files = await fs.promises.readdir(tempPath);
-
-    for (const set of this.status.all) {
-      const oldPath = path.join(tempPath, `${set}.osz`);
-      const newPath = path.join(songsPath, `${set}.osz`);
-      await fs.promises.rename(oldPath, newPath)
-    }
-
-    await Promise.all(files.map(file => {
-      if (!file.endsWith(".osz")) return
-
-      const setId = parseInt(file.split(".osz")[0])
-      if (!this.status.all.includes(setId)) return
-
-      const oldPath = path.join(tempPath, file);
-      const newPath = path.join(songsPath, file);
-      return fs.promises.rename(oldPath, newPath);
-    })).catch(err => {
-      window?.webContents.send("error", err);
-    })
+    const altpath = await getAltPath();
+    execFile(altpath,[path.join(tempPath,"*.osz")]);
   }
 
   private async postData(url: string, body: unknown) {
@@ -245,7 +225,6 @@ export class DownloadController {
         Time: difference / Math.max(this.concurrentDownloads, 1)
       } as BeatmapDownloadV2);
     } catch (err) {
-      console.log(setId, 'failed')
       this.status.failed.push(setId);
 
       if (err instanceof Error) {
