@@ -15,7 +15,6 @@
 <br />
  
   
-[![codefactor](https://img.shields.io/codefactor/grade/github/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
 [![license](https://img.shields.io/github/license/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](LICENSE)
 [![stars](https://img.shields.io/github/stars/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
 [![release](https://img.shields.io/github/v/release/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
