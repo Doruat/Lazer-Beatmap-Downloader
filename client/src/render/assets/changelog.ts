@@ -9,6 +9,20 @@ export interface ChangeLogItem {
 
 export const changeLog: ChangeLogItem[] = [
   {
+    version: "2.1.0",
+    date: 1778785019,
+    changes: [
+      {
+        title: "Client",
+        changes: [
+          "Added auto-importing.",
+          "'Downloads Folder' and is now *really* mandatory to set to start a download.",
+          "Changed the algorithm for searching for beatmaps user already has."
+        ],
+      }
+    ]
+  },
+  {
     version: "2.0.0",
     date: 1778413287,
     changes: [

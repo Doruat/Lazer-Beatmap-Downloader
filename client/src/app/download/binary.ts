@@ -60,10 +60,8 @@ const getBinaryAndHash = (platform: string, arch: string): [string, string] => {
 export const binaryPath = new Promise<string>((res) => {
   const platform = os.platform();
   const arch = os.arch();
-  console.log("Checking binary for platform:", platform, "arch:", arch);
   const [name, hash] = getBinaryAndHash(platform, arch);
   downloadBinary(name, hash).then(path => {
-    console.log("Binary ready at:", path);
     res(path);
   })
 });

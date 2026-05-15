@@ -40,7 +40,7 @@ const defaultContext: Settings = {
   setPath: () => null,
   setAltPathEnabled: () => null,
   setAltPath: () => null,
-  setMaxConcurrentDownloads: () => null,
+  setMaxConcurrentDownloads: () => null
 };
 
 export const SettingsContext = createContext<Settings>(defaultContext);
@@ -127,7 +127,7 @@ const SettingsProvider: React.FC<PropsWithChildren<any>> = ({ children }) => {
         setPath: handleSetPath,
         setAltPathEnabled: handleSetAltPathEnabled,
         setAltPath: handleSetAltPath,
-        setMaxConcurrentDownloads: handleSetMaxConcurrentDownloads,
+        setMaxConcurrentDownloads: handleSetMaxConcurrentDownloads
       }}
     >
       {children}
