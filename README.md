@@ -15,12 +15,12 @@
 <br />
  
   
-[![codefactor](https://img.shields.io/codefactor/grade/github/nzbasic/batch-beatmap-downloader?style=flat-square)](https://github.com/nzbasic/batch-beatmap-downloader)
-[![license](https://img.shields.io/github/license/nzbasic/batch-beatmap-downloader?style=flat-square)](LICENSE)
-[![stars](https://img.shields.io/github/stars/nzbasic/batch-beatmap-downloader?style=flat-square)](https://github.com/nzbasic/Collection-Helper)
-[![release](https://img.shields.io/github/v/release/nzbasic/batch-beatmap-downloader?style=flat-square)](https://github.com/nzbasic/Collection-Helper)
-[![downloads](https://img.shields.io/github/downloads/nzbasic/batch-beatmap-downloader/total?style=flat-square)](https://github.com/nzbasic/Collection-Helper)
-[![lastcommit](https://img.shields.io/github/last-commit/nzbasic/batch-beatmap-downloader?style=flat-square)](https://github.com/nzbasic/Collection-Helper)
+[![codefactor](https://img.shields.io/codefactor/grade/github/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
+[![license](https://img.shields.io/github/license/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](LICENSE)
+[![stars](https://img.shields.io/github/stars/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
+[![release](https://img.shields.io/github/v/release/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
+[![downloads](https://img.shields.io/github/downloads/Doruat/Lazer-Beatmap-Downloader/total?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
+[![lastcommit](https://img.shields.io/github/last-commit/Doruat/Lazer-Beatmap-Downloader?style=flat-square)](https://github.com/Doruat/Lazer-Beatmap-Downloader)
   
 [![go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://github.com/golang/go)
 [![electron](https://img.shields.io/badge/Electron-2B2E3A?style=for-the-badge&logo=electron&logoColor=9FEAF9)](https://github.com/electron/electron)
