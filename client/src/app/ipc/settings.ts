@@ -11,10 +11,11 @@ import fs from 'fs';
 import os from 'os';
 
 export const handleGetSettings = async () => {
-  await loadBeatmaps();
   const data = await settings.get();
   const path = (data['path'] as string)??"";
-  const validPath = Boolean(await checkValidPath(path) && ((data['tempPath'] as string)?.length??false));
+  if (path!="") 
+    await loadBeatmaps();
+  const validPath = Boolean(data['tempPath'] as string)??false;
   return { ...data, validPath, sets: beatmapIds.size };
 }
 
@@ -34,10 +35,7 @@ export const handleSetSetting = async <T extends keyof SettingType>(event: E, ke
     case "temp":
       return settings.set("temp", value);
     case "tempPath":
-      await settings.set("tempPath", value)
-      const data = await settings.get();
-      await handleSetValid((Boolean((await checkValidPath(data["path"] as  string) && ((data['tempPath'] as string)?.length))??false)));
-      return;
+      return await handleSetTempPath(value as string);
     case "autoTemp":
       return settings.set("autoTemp", value);
   }
@@ -47,28 +45,29 @@ export const handleLoadBeatmaps = loadBeatmaps;
 export const handleCheckCollections = checkCollections
 
 export const handleSetPath = async (path: string) => {
-  const data = await settings.get();
-  const validPath = (await checkValidPath(path) && ((data['tempPath'] as string)?.length??false));
   if (!(await checkValidPath(path))) {
     window?.webContents.send("error", "Could not find 'client.realm' file");
-    return [false, 0];
+    return 0;
   }
 
   await settings.set("path", path);
   await loadBeatmaps();
 
-  return [validPath, beatmapIds.size]
+  return beatmapIds.size
+}
+
+export const handleSetTempPath = async (path: string) => {
+  await settings.set("tempPath", path);
+  return true
 }
 
 export const handleSetAltPath = async (path: string): Promise<number> => {
   await settings.set("altPath", path);
-  await loadBeatmaps();
   return beatmapIds.size
 }
 
 export const handleSetAltPathEnabled = async (enabled: boolean) => {
   await settings.set("altPathEnabled", enabled);
-  await loadBeatmaps();
   return beatmapIds.size;
 }
 
@@ -83,11 +82,6 @@ export const handleBrowseFile = async () => {
     properties: ["openFile"],
   });
   return dialogResult;
-}
-
-export const handleSetValid = async (val: boolean): Promise<boolean> => {
-  await settings.set("validPath",val);
-  return val;
 }
 
 

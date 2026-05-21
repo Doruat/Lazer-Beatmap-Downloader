@@ -12,12 +12,12 @@ export let beatmapIds: Set<number> = new Set();
 
 const realmreader =
   process.platform === "win32"
-    ? path.join("publish","ConsoleApp1.exe")
-    : "realmreader";
+    ? path.join("publish","realmreader.exe")
+    : path.join("bin","realmreader");
 
 const rrpath = app.isPackaged
   ? path.join(process.resourcesPath, realmreader)
-  : path.join(__dirname, "../../bin", realmreader);
+  : path.join(__dirname, "../..", realmreader);
 
 const run = (path: string): number[] => {
   const stdout = execFileSync(rrpath, [path], { encoding: "utf-8" });

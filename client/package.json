@@ -8,6 +8,20 @@
     "type": "git",
     "url": "https://github.com/doruat/lazer-beatmap-downloader.git"
   },
+  "build": {
+    "appId": "com.doruat.lbd",
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility"
+    },
+    "extraResources": [
+      {
+        "from": "bin/",
+        "to": "bin/",
+        "filter": ["**/*"]
+      }
+    ]
+  },
   "scripts": {
     "start": "electron-forge start",
     "lint": "cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx",
@@ -20,7 +34,9 @@
     "make:win": "electron-forge make --platform win32",
     "publish:mac": "electron-forge publish --platform darwin",
     "publish:linux": "electron-forge publish --platform linux",
-    "publish:win": "electron-forge publish --platform win32"
+    "publish:win": "electron-forge publish --platform win32",
+    "package": "electron-forge package",
+    "dist": "npm run package && electron-builder"
   },
   "keywords": [],
   "author": {
@@ -89,6 +105,7 @@
     "css-loader": "^5.0.0",
     "dotenv": "^10.0.0",
     "electron": "13.3.0",
+    "electron-builder": "^26.8.1",
     "electron-icon-builder": "^2.0.1",
     "eslint": "^7.6.0",
     "eslint-import-resolver-typescript": "^2.4.0",

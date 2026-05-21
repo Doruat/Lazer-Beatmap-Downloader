@@ -50,5 +50,5 @@ export const handleDeleteDownload = (event: E, downloadId: string) => deleteDown
 export const handleMoveAllDownloads = async () => {
   const tempPath = await getTempPath();
   const altPath = await getAltPath();
-  execFile(altPath,[path.join(tempPath,"*.osz")])
+  execFile(altPath,[path.join(tempPath,"*")])
 };

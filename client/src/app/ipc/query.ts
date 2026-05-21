@@ -6,6 +6,7 @@ import { MetricsV2 } from "../../models/metrics";
 import { beatmapIds, loadBeatmaps } from "../beatmaps";
 import { clientId } from "../download/settings";
 import { FilterResponseV2 } from "../../models/api-v2";
+import { convertTreeToSimpleMode } from "@/models/simple";
 
 export let currentQueryResult: FilterResponseV2;
 export let currentDownloadDetails: DownloadDetails;
@@ -15,6 +16,9 @@ export const handleQuery = async (event: E, node: Node, limit?: number, order?: 
   if (limit) {
     body.limit = limit;
   }
+
+  console.log(JSON.stringify(body["node"]));
+  console.log(body["clientId"]);
 
   const res = (await axios.post<FilterResponseV2>(`${serverUri}/v2/filter`, body)).data
   currentQueryResult = res;

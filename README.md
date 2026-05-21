@@ -100,10 +100,10 @@ You must have run your osu! client at least once.
 Please follow these steps to build the project yourself:
 
 1. Pull the repo
-2. Build the c# project to /client/bin/ (Rename the exe to "realmreader" if on linux/mac or leave as "ConsoleApp1" on win)
+2. Build the c# project to /client/bin/ (Rename the exe to "realmreader" if on linux/mac or as "publish/realmreader.exe" on win with its dependencies)
 3. Change directory to ./client/
 4. Run "yarn" to install dependencies
-5. Run "yarn make:win" (or "yarn start" to dev)
+5. Run "yarn make:linux" (or "yarn start" to dev)
 6. Run the installer found in /releases/
 
 ## Contributing

@@ -7,7 +7,7 @@ import { CircularProgress } from "@mui/material";
 import { sampleTree } from "../../models/filter";
 import { RuleType } from "../../models/rules";
 import { Node, Group } from "../../models/filter";
-import { Settings } from "../components/Settings";
+import { Temporary } from "../components/Temporary";
 import { DownloadDetails, QueryOrder } from "../../models/api";
 import { useStickyState } from "../hooks/useStickyState";
 import { DownloadSettings } from "../components/DownloadSettings";
@@ -121,7 +121,7 @@ export const Query = () => {
   if (!tree.group) return null
   return (
     <div className="flex flex-col w-full gap-4">
-      <Settings />
+      <Temporary />
       {!validPath ? <InvalidPath /> : (
         <>
           <div className="flex items-center gap-4">

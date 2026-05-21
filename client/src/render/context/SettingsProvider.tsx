@@ -6,6 +6,7 @@ import React, {
 interface SettingsObject {
   darkMode: boolean;
   path: string;
+  tempPath: string;
   altPath: string;
   altPathEnabled: boolean;
   beatmapSetCount: number;
@@ -19,6 +20,7 @@ export interface Settings {
 
   toggleDarkMode: (on?: boolean) => void
   setPath: (path: string) => void;
+  setTempPath: (path: string) => void;
   setAltPathEnabled: (enabled: boolean) => void;
   setAltPath: (path: string) => void;
   setMaxConcurrentDownloads: (number: number) => void;
@@ -26,8 +28,9 @@ export interface Settings {
 
 const defaultContext: Settings = {
   settings: {
-    darkMode: true,
+    darkMode: false,
     path: "",
+    tempPath: "",
     altPath: "",
     altPathEnabled: false,
     beatmapSetCount: 0,
@@ -38,6 +41,7 @@ const defaultContext: Settings = {
 
   toggleDarkMode: () => null,
   setPath: () => null,
+  setTempPath: () => null,
   setAltPathEnabled: () => null,
   setAltPath: () => null,
   setMaxConcurrentDownloads: () => null
@@ -53,6 +57,7 @@ const SettingsProvider: React.FC<PropsWithChildren<any>> = ({ children }) => {
       setSettings({
         darkMode: res.darkMode as boolean ?? true,
         path: res.path as string ?? "",
+        tempPath: res.tempPath as string ?? "",
         altPath: res.altPath as string ?? "",
         altPathEnabled: res.altPathEnabled as boolean ?? false,
         beatmapSetCount: res.sets as number ?? 0,
@@ -82,12 +87,20 @@ const SettingsProvider: React.FC<PropsWithChildren<any>> = ({ children }) => {
   };
 
   const handleSetPath = async (path: string) => {
-    const [validPath, beatmapSetCount] = await window.electron.setSetting("path", path)
+    const beatmapSetCount = await window.electron.setSetting("path", path)
     setSettings(prev => ({
       ...prev,
       path,
-      validPath,
       beatmapSetCount
+    }))
+  }
+
+  const handleSetTempPath = async (tempPath: string) => {
+    const validPath = await window.electron.setSetting("tempPath", tempPath)
+    setSettings(prev => ({
+      ...prev,
+      tempPath,
+      validPath
     }))
   }
 
@@ -125,6 +138,7 @@ const SettingsProvider: React.FC<PropsWithChildren<any>> = ({ children }) => {
         settings,
         toggleDarkMode,
         setPath: handleSetPath,
+        setTempPath: handleSetTempPath,
         setAltPathEnabled: handleSetAltPathEnabled,
         setAltPath: handleSetAltPath,
         setMaxConcurrentDownloads: handleSetMaxConcurrentDownloads
