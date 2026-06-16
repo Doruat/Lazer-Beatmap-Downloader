@@ -31,7 +31,7 @@ export const checkValidTempPath = async (path: string) => {
 
 export const getSongsFolder = async () => {
   const osuPath = await settings.get("path") as string;
-  return path.join(osuPath, "client.realm")
+  return osuPath;
 }
 
 export const getTempPath = async () => {

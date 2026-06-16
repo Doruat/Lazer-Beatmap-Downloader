@@ -9,6 +9,19 @@ export interface ChangeLogItem {
 
 export const changeLog: ChangeLogItem[] = [
   {
+    version: "2.1.1",
+    date: 1781552171,
+    changes: [
+      {
+        title: "Client",
+        changes: [
+          "Fixed some bugs that appeared out of nowhere.",
+          "Very likely added some hidden bugs"
+        ],
+      }
+    ]
+  },
+  {
     version: "2.1.0",
     date: 1778785019,
     changes: [

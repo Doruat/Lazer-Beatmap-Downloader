@@ -1,7 +1,7 @@
 {
   "name": "lazer-beatmap-downloader",
   "productName": "Lazer Beatmap Downloader",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A way to mass download osu! beatmaps with a user friendly query builder.",
   "main": ".webpack/main",
   "repository": {
@@ -10,9 +10,14 @@
   },
   "build": {
     "appId": "com.doruat.lbd",
+    "asar": true,
+    "asarUnpack": [
+      "bin/**"
+    ],
     "linux": {
       "target": "AppImage",
-      "category": "Utility"
+      "category": "Utility",
+      "icon": "src/render/assets/bbd.png"
     },
     "extraResources": [
       {

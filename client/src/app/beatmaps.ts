@@ -12,7 +12,7 @@ export let beatmapIds: Set<number> = new Set();
 
 const realmreader =
   process.platform === "win32"
-    ? path.join("publish","realmreader.exe")
+    ? path.join("bin","realmreader.exe")
     : path.join("bin","realmreader");
 
 const rrpath = app.isPackaged
@@ -34,8 +34,18 @@ const run = (path: string): number[] => {
 
 export const loadBeatmaps = async () => {
 
-  const path = (await getSongsFolder());
-  const ids: number[] = run(path);
+  const clientpath = (await getSongsFolder());
+
+  const files = await fs.promises.readdir(clientpath);
+  if (!files.includes("client.realm"))
+  {
+    beatmapIds=new Set();
+    window?.webContents.send("beatmap-count", 0);
+    window?.webContents.send("beatmap-scan-complete");
+    return;
+  }
+
+  const ids: number[] = run(path.join(clientpath,"client.realm"));
   beatmapIds=new Set(ids);
   window?.webContents.send("beatmap-count", beatmapIds.size);
   window?.webContents.send("beatmap-scan-complete");

@@ -8,8 +8,8 @@ const packageAssetsPath = path.join(__dirname, "..", "src", "render", "assets");
 module.exports = {
   packagerConfig: {
     extraResource: [
-      "./bin/realmreader"
-    ],
+    "./bin"
+  ],
     asar: true,
     icon: path.join(packageAssetsPath, "bbd.ico"),
     executableName: "lazer-beatmap-downloader",
@@ -28,21 +28,11 @@ module.exports = {
     },
   ],
   makers: [
-    // https://www.electronforge.io/config/makers
-      {
-      name: "@electron-forge/maker-appimage",
-      config: {
-        options: {
-        icon: path.join(packageAssetsPath, "bbd.ico"),
-          categories: ["Utility"]
-        }
-      }
-    },
     {
       name: "@electron-forge/maker-squirrel",
       config: {
         // https://js.electronforge.io/maker/squirrel/interfaces/makersquirrelconfig
-        setupExe: "LBDWindowsSetup.exe",
+        setupExe: "lazer-beatmap-downloader-setup.exe",
         setupIcon: path.join(packageAssetsPath, "bbd.ico"),
         icon: path.join(packageAssetsPath, "bbd.ico"),
         iconUrl:
